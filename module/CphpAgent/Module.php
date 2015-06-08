@@ -26,9 +26,11 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
         $ctrl = $event->getRouteMatch()->getParam('controller');
         $action = $event->getRouteMatch()->getParam('action');
 
-        if ($ctrl !== 'CphpAgent\Controller\Admin') return;
+        if ($ctrl !== 'CphpAgent\Controller\Admin') {
+            return;
+        }
 
-        if (!$authService->hasIdentity() && $action !== 'login'){
+        if (!$authService->hasIdentity() && $action !== 'login') {
             $url = $event->getRouter()->assemble(array('action' => 'login'), array('name' => 'zfcadmin/login'));
 
             $response = $event->getResponse();
