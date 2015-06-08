@@ -4,3 +4,4 @@ vendor
 logs
 composer.phar
 data
+config/development.config.php
